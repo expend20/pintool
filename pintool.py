@@ -125,11 +125,12 @@ def solve(initpass,passlen,symbfill,charset,expression):
 
 		for char in charset:
 		
-			password = tempassword[:i-1] + '\\'+char + tempassword[i:]
+			newpass = bytearray(tempassword)
+			newpass[i] = char
+			newpass = str(newpass)
+
 			inscount = pin(password)
 		
-			newpass = password.replace("\\","", 1)
-
 			if inicialdifference == 0:
 				inicialdifference = inscount
 
